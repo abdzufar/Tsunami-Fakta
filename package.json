@@ -1,0 +1,30 @@
+{
+  "name": "tsunami-fakta",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/abdzufar/Tsunami-Fakta#readme",
+  "bugs": {
+    "url": "https://github.com/abdzufar/Tsunami-Fakta/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdzufar/Tsunami-Fakta.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "multer": "^2.2.0",
+    "pg": "^8.22.0",
+    "sequelize": "^6.37.8",
+    "sequelize-cli": "^6.6.5"
+  },
+  "devDependencies": {}
+}
