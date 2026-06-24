@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Article.belongsToMany(models.Category, {through: models.ArticleCategory});
       Article.belongsTo(models.User, {
-        foreignKey: 'AuthorId', 
-        as: 'Author'
+        foreignKey: 'AuthorId'
       });
       Article.belongsToMany(models.User, {
         through: models.ArticleBookmark, 
