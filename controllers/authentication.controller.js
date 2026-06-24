@@ -28,7 +28,7 @@ class Controller {
       let data = await Article.findByPk(1, {
         include: {
           model: User,
-          attributes: ["username"],
+          as: "Author"
         },
       });
       res.send(data)
