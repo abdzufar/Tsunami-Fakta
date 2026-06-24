@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Controller = require("../controllers/newsController");
+const Controller = require("../controllers/news.controller");
 
 router.get("/", (req, res) => {
   console.log("masuk");
