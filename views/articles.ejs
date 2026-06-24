@@ -1,12 +1,15 @@
 <%- include('components/header', {name: "Landing Page"}) %>
-<div class="text-center my-5 py-5">
+<div class="text-center pt-5 pb-5 text-bg-info">
   <h1 class="display-5 fw-bold">TSUNAMI FAKTA</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead">Sumber informasi terpercaya yang ada di muka bumi.</p>
+    <p class="blockquote-footer">Banyak Informasi seputar olahraga, teknologi, hiburan dan masih banyak lagi.</p>
   </div>
 </div>
-<div class="container">
-  <div class="row g-4">
+<div class="container mt-5">
+  <a href="#" class="btn btn-outline-success mb-5">Add new Article</a>
+  <%#= JSON.parse(categoriesData) %>
+  <div class="row g-4 mb-5">
     <% data.forEach(item => { %>
       <div class="col-lg-3">
         <div class="card">
@@ -14,7 +17,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= item.title %></h5>
             <p class="card-text"><%= cutContent(item.content) %></p>
-            <a href="#" class="btn btn-primary">See Details</a>
+            <a href="/articles/<%= item.id %>" class="btn btn-primary">See Details</a>
           </div>
         </div>
       </div>
