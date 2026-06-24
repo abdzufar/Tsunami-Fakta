@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Judul Olahraga",
+    "AuthorId": 1,
+    "thumbnailPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "deskripsi": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ex eros. Nunc ornare faucibus mollis. Donec elementum mauris viverra, blandit lacus quis, mattis urna. Donec non lacinia enim, ut tempor nibh. Phasellus nulla odio, euismod eu tortor at, dapibus dignissim quam. Proin luctus, mauris ut hendrerit congue, mauris nunc tincidunt risus, id mollis augue purus auctor lacus. Duis ultricies mauris a leo suscipit, at maximus elit venenatis. Nullam ac mattis massa."
+  },
+  {
+    "id": 2,
+    "title": "Judul Teknologi",
+    "AuthorId": 2,
+    "thumbnailPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "deskripsi": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ex eros. Nunc ornare faucibus mollis. Donec elementum mauris viverra, blandit lacus quis, mattis urna. Donec non lacinia enim, ut tempor nibh. Phasellus nulla odio, euismod eu tortor at, dapibus dignissim quam. Proin luctus, mauris ut hendrerit congue, mauris nunc tincidunt risus, id mollis augue purus auctor lacus. Duis ultricies mauris a leo suscipit, at maximus elit venenatis. Nullam ac mattis massa."
+  }
+]
