@@ -1,0 +1,39 @@
+<%- include('components/header') %>
+<main>
+  <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4">Register</h2>
+
+          <form action="/authentication/register" method="post">
+            
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="mb-4">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary d-block mx-auto">Create Account</button>
+            
+          </form>
+
+          <div class="text-center mt-3">
+            <small>Already have an account? <a href="/login">Login here</a></small>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<%- include('components/footer') %>
