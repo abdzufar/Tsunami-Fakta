@@ -24,15 +24,8 @@ class Controller {
   
   static async getLoginForm(req, res) {
     try {
-      const name = "Login Akun"
-      let data = await Article.findByPk(1, {
-        include: {
-          model: User,
-          as: "Author"
-        },
-      });
-      res.send(data)
-      // res.render('login', {name})
+      const name = "Login Akun";
+      res.render('login', {name});
     } catch (error) {
       console.log(error);
       res.send(error);
