@@ -5,17 +5,20 @@
       <div class="card">
         <div class="card-body p-4">
           <h2 class="text-center mb-4">Login</h2>
+          <% if (errorMessage) { %>
+            <h6 class="alert alert-danger"><%= errorMessage %></h6>
+          <% } %>
 
           <form action="/authentication/login" method="POST">
             
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username">
+              <input type="text" class="form-control" id="username" name="username" value="<%= userInput.username %>">
             </div>
 
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password">
+              <input type="password" class="form-control" id="password" name="password"  value="<%= userInput.password %>">
             </div>
 
             <button type="submit" class="btn btn-primary d-block mx-auto">Login</button>
@@ -23,7 +26,7 @@
           </form>
 
           <div class="text-center mt-3">
-            <small>Belum punya? <a href="/authentication/register">Daftar di sini</a></small>
+            <small>Belum punya akun? <a href="/authentication/register">Daftar di sini</a></small>
           </div>
         
         </div>

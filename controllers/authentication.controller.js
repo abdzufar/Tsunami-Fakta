@@ -4,8 +4,11 @@ const bcrypt = require('bcryptjs');
 class Controller {
   static async getRegisterForm(req, res) {
     try {
-      const name = "Daftar Akun Baru"
-      res.render('register', {name})
+      const name = "Daftar Akun Baru";
+      const errorMessage = req.query.errorMessage ? JSON.parse(req.query.errorMessage) : {};
+      const userInput = req.query.userInput ? JSON.parse(req.query.userInput) : {};
+      console.log(userInput);
+      res.render('register', {name, errorMessage, userInput})
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -18,14 +21,23 @@ class Controller {
       await User.create(userInput);
       res.redirect('/');
     } catch (error) {
-      sequelizeValidationErrorCheck(req, res, error);
+      if (error.name !== "SequelizeValidationError") {
+        console.log(error);
+        res.send(error);
+      } else {
+        const errorObj = sequelizeValidationErrorCheck(error);
+        const userInput = encodeURIComponent(JSON.stringify(req.body));
+        res.redirect(`/authentication/register?errorMessage=${errorObj}&userInput=${userInput}`);
+      }
     }
   }
   
   static async getLoginForm(req, res) {
     try {
       const name = "Login Akun";
-      res.render('login', {name});
+      const errorMessage = req.query.errorMessage || "";
+      const userInput = req.query.userInput ? JSON.parse(req.query.userInput) : {};
+      res.render('login', {name, errorMessage, userInput});
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -42,8 +54,7 @@ class Controller {
           username: userInput.username
         }
       })
-      console.log(userToTest);
-      if (!userInput) {
+      if (!userToTest) {
         throw new Error("Username atau Password tidak sesuai.");
       } else if (!bcrypt.compareSync(userInput.password, userToTest.password)) {
         throw new Error("Username atau Password tidak sesuai.");
@@ -51,7 +62,8 @@ class Controller {
       res.redirect('/');
     } catch (error) {
       console.log(error);
-      res.send(error);
+      const userInput = encodeURIComponent(JSON.stringify(req.body))
+      res.redirect(`/authentication/login?errorMessage=${error.message}&userInput=${userInput}`);
     }
   }
 }
