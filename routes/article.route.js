@@ -3,7 +3,8 @@ const Controller = require("../controllers/article.controller");
 
 router.get("/", (req, res) => {
   console.log("masuk");
-  res.send("ini dari news routes");
+  res.render('landingPage')
+  // res.send("ini dari news routes");
 });
 
 module.exports = router;
