@@ -8,5 +8,20 @@
     "id": 2,
     "ArticleId": 2,
     "UserId": 4
+  },
+  {
+    "id": 3,
+    "ArticleId": 2,
+    "UserId": 6
+  },
+  {
+    "id": 4,
+    "ArticleId": 1,
+    "UserId": 7
+  },
+  {
+    "id": 5,
+    "ArticleId": 2,
+    "UserId": 2
   }
 ]
