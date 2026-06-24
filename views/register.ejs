@@ -10,28 +10,32 @@
             
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username">
+              <input type="text" class="form-control <%= errorMessage.username ? "is-invalid" : "" %>" id="username" name="username" value="<%= userInput.username %>">
+              <pre class="invalid-feedback"><%= errorMessage.username %></pre>
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">Alamat Email</label>
-              <input type="email" class="form-control" id="email" name="email">
+              <input type="email" class="form-control <%= errorMessage.email ? "is-invalid" : "" %>" id="email" name="email" value="<%= userInput.email %>">
+              <pre class="invalid-feedback"><%= errorMessage.email %></pre>
             </div>
 
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password">
+              <input type="password" class="form-control <%= errorMessage.password ? "is-invalid" : "" %>" id="password" name="password" value="<%= userInput.password %>">
+              <pre class="invalid-feedback"><%= errorMessage.password %></pre>
             </div>
 
             <div class="mb-3">
               <label for="role" class="form-label">Role</label>
-              <select name="role" id="role" class="form-select">
-                <option selected hidden value=""></option>
+              <select name="role" id="role" class="form-select <%= errorMessage.password ? "is-invalid" : "" %>">
+                <option <%= !userInput.role ? "selected" : "" %> hidden value=""></option>
                 <% const roleChoices = ['Penulis', 'Pembaca'] %>
                 <% roleChoices.forEach(roleChoice => { %>
-                  <option value="<%= roleChoice %>"><%= roleChoice %></option>
+                  <option <%= userInput.role === roleChoice ? "selected" : "" %> value="<%= roleChoice %>"><%= roleChoice %></option>
                 <% }) %>
               </select>
+              <pre class="invalid-feedback"><%= errorMessage.role %></pre>
             </div>
 
             <button type="submit" class="btn btn-primary d-block mx-auto">Daftar Akun</button>
