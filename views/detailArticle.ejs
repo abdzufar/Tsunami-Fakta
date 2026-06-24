@@ -6,6 +6,7 @@
     </div>
   </div>
   <div class="card mt-5">
+    <%= JSON.stringify(data) %>
     <div class="card-header">
       Article Details
     </div>
@@ -16,7 +17,7 @@
         </div>
         <div class="col-8">
           <h1 class="display-6"><%= data.title %></h1>
-          <p class="lead">Penulis disini</p>
+          <p class="lead"><%= nameSplit(data.User.username) %></p>
           <p><%= data.content %></p>
         </div>
       </div>

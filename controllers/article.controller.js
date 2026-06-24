@@ -1,5 +1,6 @@
 const { Article, User, Category } = require("../models");
 const cutContent = require("../helpers/cutContent");
+const nameSplit = require("../helpers/nameSplit");
 const { Op } = require("sequelize");
 
 class Controller {
@@ -17,28 +18,13 @@ class Controller {
     try {
       const { id } = req.params;
 
-      let categoriesData = await Category.findAll();
-
       let data = await Article.findByPk(id, {
         include: {
           model: User,
-          attributes: ["username"],
         },
       });
-      // let data = await Article.findAll({
-      //   include: {
-      //     model: User,
-      //     attributes: ["username"],
-      //   },
-      //   where: {
-      //     id: {
-      //       [Op.eq]: id,
-      //     },
-      //   },
-      // });
-      console.log(categoriesData);
 
-      res.render("detailArticle", { data });
+      res.render("detailArticle", { data, nameSplit });
     } catch (error) {
       console.log(error);
       res.send(error);
