@@ -1,0 +1,23 @@
+<%- include('components/header', {name: "Landing Page"}) %>
+<div class="text-center my-5 py-5">
+  <h1 class="display-5 fw-bold">TSUNAMI FAKTA</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead">Sumber informasi terpercaya yang ada di muka bumi.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row g-4">
+    <% data.forEach(item => { %>
+      <div class="col-lg-3">
+        <div class="card">
+          <img src="<%= item.thumbnailPicture %> " class="card-img-top" alt="<%= item.title %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= item.title %></h5>
+            <p class="card-text"><%= cutContent(item.content) %></p>
+            <a href="#" class="btn btn-primary">See Details</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<%- include('components/footer') %>
