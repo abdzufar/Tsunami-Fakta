@@ -4,69 +4,69 @@
     "username": "andi_pratama",
     "email": "andi.pratama@mail.com",
     "password": "andi123",
-    "role": "penulis"
+    "role": "Penulis"
   },
   {
     "id": 2,
     "username": "siti_rahma",
     "email": "siti.rahma@mail.com",
     "password": "siti123",
-    "role": "pembaca"
+    "role": "Pembaca"
   },
   {
     "id": 3,
     "username": "budi_santoso",
     "email": "budi.santoso@mail.com",
     "password": "budi123",
-    "role": "penulis"
+    "role": "Penulis"
   },
   {
     "id": 4,
     "username": "dewi_lestari",
     "email": "dewi.lestari@mail.com",
     "password": "dewi123",
-    "role": "pembaca"
+    "role": "Pembaca"
   },
   {
     "id": 5,
     "username": "rizki_hidayat",
     "email": "rizki.hidayat@mail.com",
     "password": "rizki123",
-    "role": "penulis"
+    "role": "Penulis"
   },
   {
     "id": 6,
     "username": "putri_ayu",
     "email": "putri.ayu@mail.com",
     "password": "putri123",
-    "role": "pembaca"
+    "role": "Pembaca"
   },
   {
     "id": 7,
     "username": "fajar_nugroho",
     "email": "fajar.nugroho@mail.com",
     "password": "fajar123",
-    "role": "penulis"
+    "role": "Penulis"
   },
   {
     "id": 8,
     "username": "maya_sari",
     "email": "maya.sari@mail.com",
     "password": "maya123",
-    "role": "pembaca"
+    "role": "Pembaca"
   },
   {
     "id": 9,
     "username": "agus_wijaya",
     "email": "agus.wijaya@mail.com",
     "password": "agus123",
-    "role": "penulis"
+    "role": "Penulis"
   },
   {
     "id": 10,
     "username": "nina_kartika",
     "email": "nina.kartika@mail.com",
     "password": "nina123",
-    "role": "pembaca"
+    "role": "Pembaca"
   }
 ]
