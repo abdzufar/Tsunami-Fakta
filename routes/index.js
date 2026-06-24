@@ -1,6 +1,10 @@
 const router = require("express").Router();
-const Controller = require("../controllers/Controller");
 
-router.get("/", Controller.renderLandingPage);
+const newsRoutes = require("./news.js");
+
+router.get("/", (req, res) => {
+  res.redirect("/news");
+});
+router.use("/news", newsRoutes);
 
 module.exports = router;
