@@ -17,6 +17,12 @@ module.exports = {
       },
       AuthorId: {
         type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+        onUpdate: "cascade",
+        onDelete: "cascade",
       },
       thumbnailPicture: {
         type: Sequelize.STRING,

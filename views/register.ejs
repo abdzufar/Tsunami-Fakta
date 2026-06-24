@@ -1,0 +1,50 @@
+<%- include('components/header') %>
+<main class="flex-grow-1 d-flex">
+  <div class="container-fluid w-100 d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4">Registrasi</h2>
+
+          <form action="/authentication/register" method="POST">
+            
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Alamat Email</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <select name="role" id="role" class="form-select">
+                <option selected hidden value=""></option>
+                <% const roleChoices = ['Penulis', 'Pembaca'] %>
+                <% roleChoices.forEach(roleChoice => { %>
+                  <option value="<%= roleChoice %>"><%= roleChoice %></option>
+                <% }) %>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary d-block mx-auto">Daftar Akun</button>
+            
+          </form>
+
+          <div class="text-center mt-3">
+            <small>Sudah punya akun? <a href="/authentication/login">Login di sini</a></small>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<%- include('components/footer') %>

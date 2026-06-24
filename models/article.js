@@ -11,7 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Article.belongsToMany(models.Category, {through: models.ArticleCategory});
-      Article.belongsToMany(models.User, {through: models.ArticleBookmark});
+      Article.belongsTo(models.User, {
+        foreignKey: 'AuthorId', 
+        as: 'Author'
+      });
+      Article.belongsToMany(models.User, {
+        through: models.ArticleBookmark, 
+        foreignKey: 'ArticleId',
+        as: 'BookmarkedByUsers'
+      });
     }
   }
   Article.init({
