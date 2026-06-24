@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "fullName": "andi pratama",
+    "birthDate": "1995-01-01",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 1
+  },
+  {
+    "id": 2,
+    "fullName": "siti rahma",
+    "birthDate": "1991-01-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 2
+  },
+  {
+    "id": 3,
+    "fullName": "budi santoso",
+    "birthDate": "1992-02-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 3
+  },
+  {
+    "id": 4,
+    "fullName": "dewi lestari",
+    "birthDate": "1993-03-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 4
+  },
+  {
+    "id": 5,
+    "fullName": "rizki hidayat",
+    "birthDate": "1994-04-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 5
+  },
+  {
+    "id": 6,
+    "fullName": "putri ayu",
+    "birthDate": "1995-05-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 6
+  },
+  {
+    "id": 7,
+    "fullName": "fajar nugroho",
+    "birthDate": "1996-06-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 7
+  },
+  {
+    "id": 8,
+    "fullName": "maya sari",
+    "birthDate": "1997-07-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 8
+  },
+  {
+    "id": 9,
+    "fullName": "agus wijaya",
+    "birthDate": "1998-08-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 9
+  },
+  {
+    "id": 10,
+    "fullName": "nina kartika",
+    "birthDate": "1999-09-20",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
+    "UserId": 10
+  }
+]

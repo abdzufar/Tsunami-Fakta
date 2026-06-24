@@ -1,0 +1,9 @@
+[
+  { "id": 1, "name": "Olahraga" },
+  { "id": 2, "name": "Teknologi" },
+  { "id": 3, "name": "Bisnis" },
+  { "id": 4, "name": "Hiburan" },
+  { "id": 5, "name": "Kesehatan" },
+  { "id": 6, "name": "Pendidikan" },
+  { "id": 7, "name": "Gaya Hidup" }
+]
