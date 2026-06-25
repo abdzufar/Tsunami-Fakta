@@ -1,4 +1,4 @@
-<%- include('components/header', {name: "Article Details"}) %>
+<%- include('components/header', {name: "Article Details", currentUser}) %>
 <div class="container">
   <div class="row">
     <div class="col-4 mt-5">
@@ -12,7 +12,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-4">
-          <img src="<%= data.thumbnailPicture %>" alt="<%= data.title %>" style="width: 100%;">
+          <img src="http://<%= data.thumbnailPicture %>" alt="<%= data.title %>" style="width: 100%;">
         </div>
         <div class="col-8">
           <h1 class="display-6"><%= data.title %></h1>
@@ -23,9 +23,13 @@
     </div>
   </div>
   <div class="mt-5">
+    <% if (currentUser !== null) { %>
+      <% if (currentUser.id === data.AuthorId) { %>
+        <a class="btn btn-outline-warning">Edit Article</a>
+        <a class="btn btn-outline-danger">Delete Article</a>
+      <% } %>
+    <% } %>
       <a class="btn btn-outline-success">Add To Bookmark</a>
-      <a class="btn btn-outline-warning">Edit Article</a>
-      <a class="btn btn-outline-danger">Delete Article</a>
   </div>
 </div>
 <%- include('components/footer') %>
