@@ -20,7 +20,7 @@ router.get("/", Controller.renderArticlePage);
 router.get("/add", preventGuests, Controller.addArticle);
 router.post("/add", upload.single("thumbnailPicture"), Controller.postArticle);
 
-router.get("/edit/:id", Controller.editArticle);
+router.get("/edit/:id", preventGuests, Controller.editArticle);
 router.post(
   "/edit/:id",
   upload.single("thumbnailPicture"),
@@ -28,6 +28,8 @@ router.post(
 );
 
 router.get("/myBookmarks", preventGuests, Controller.getMyBookmarks);
+
+router.get("/delete/:id", preventGuests, Controller.deleteArticle);
 
 router.get("/:id", Controller.getDetailArticle);
 
