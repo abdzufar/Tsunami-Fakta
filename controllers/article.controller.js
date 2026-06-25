@@ -41,7 +41,6 @@ class Controller {
       if (req.query.error !== undefined) {
         errorShow = req.query.error.split(",").join(" and ");
       }
-      console.log(req.query.error);
 
       res.render("addNewArticle", { currentUser, errorShow });
     } catch (error) {
@@ -80,10 +79,15 @@ class Controller {
     try {
       const currentUser = req.session.currentUser || null;
 
+      let errorShow = "";
+      if (req.query.error !== undefined) {
+        errorShow = req.query.error.split(",").join(" and ");
+      }
+
       const { id } = req.params;
       let data = await Article.findByPk(id);
 
-      res.render("editArticle.ejs", { data, currentUser });
+      res.render("editArticle.ejs", { data, currentUser, errorShow });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -124,8 +128,11 @@ class Controller {
 
       res.redirect(`/article/${id}`);
     } catch (error) {
-      console.log(error);
-      res.send(error);
+      if (error.name === "SequelizeValidationError") {
+        error = error.errors.map((el) => el.message);
+      }
+      // res.send(error);
+      res.redirect(`/article/edit/${req.params.id}?error=${error}`);
     }
   }
 
