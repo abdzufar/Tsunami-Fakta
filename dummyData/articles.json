@@ -1,16 +1,37 @@
 [
   {
     "id": 1,
-    "title": "Judul Olahraga",
+    "title": "Pemerintah Resmikan Jembatan Penghubung Antar Pulau",
     "AuthorId": 1,
-    "thumbnailPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ex eros. Nunc ornare faucibus mollis. Donec elementum mauris viverra, blandit lacus quis, mattis urna. Donec non lacinia enim, ut tempor nibh. Phasellus nulla odio, euismod eu tortor at, dapibus dignissim quam. Proin luctus, mauris ut hendrerit congue, mauris nunc tincidunt risus, id mollis augue purus auctor lacus. Duis ultricies mauris a leo suscipit, at maximus elit venenatis. Nullam ac mattis massa."
+    "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
+    "content": "Jembatan sepanjang dua kilometer ini diharapkan mempersingkat waktu tempuh warga dari empat jam menjadi hanya tiga puluh menit. Peresmian dihadiri sejumlah pejabat daerah dan disambut antusias masyarakat sekitar."
   },
   {
     "id": 2,
-    "title": "Judul Teknologi",
+    "title": "Harga Cabai Merah Melonjak di Pasar Tradisional",
     "AuthorId": 2,
-    "thumbnailPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDfhNd4OIcpeNfAQq9Plzj-VoNuB21p9kOPPSSJej5-MXMyfxWRsDvkc&s=10",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ex eros. Nunc ornare faucibus mollis. Donec elementum mauris viverra, blandit lacus quis, mattis urna. Donec non lacinia enim, ut tempor nibh. Phasellus nulla odio, euismod eu tortor at, dapibus dignissim quam. Proin luctus, mauris ut hendrerit congue, mauris nunc tincidunt risus, id mollis augue purus auctor lacus. Duis ultricies mauris a leo suscipit, at maximus elit venenatis. Nullam ac mattis massa."
+    "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
+    "content": "Kenaikan harga dipicu oleh menurunnya pasokan akibat cuaca buruk di beberapa daerah penghasil. Pedagang memperkirakan harga akan kembali stabil dalam dua minggu ke depan."
+  },
+  {
+    "id": 3,
+    "title": "Startup Lokal Raih Pendanaan dari Investor Asing",
+    "AuthorId": 3,
+    "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
+    "content": "Perusahaan rintisan di bidang teknologi pendidikan ini berhasil mengumpulkan dana segar untuk ekspansi ke pasar regional. Dana tersebut akan digunakan untuk pengembangan produk dan perekrutan talenta baru."
+  },
+  {
+    "id": 4,
+    "title": "Festival Budaya Tahunan Kembali Digelar Akhir Pekan Ini",
+    "AuthorId": 4,
+    "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
+    "content": "Acara menampilkan ratusan penampil dari berbagai daerah dengan beragam pertunjukan seni tradisional. Panitia menargetkan kunjungan lebih dari sepuluh ribu pengunjung selama tiga hari penyelenggaraan."
+  },
+  {
+    "id": 5,
+    "title": "Tim Nasional Lolos ke Babak Final Setelah Menang Dramatis",
+    "AuthorId": 5,
+    "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
+    "content": "Kemenangan diraih melalui adu penalti yang berlangsung menegangkan hingga tendangan terakhir. Pendukung memadati jalanan untuk merayakan keberhasilan tim kebanggaan mereka."
   }
 ]

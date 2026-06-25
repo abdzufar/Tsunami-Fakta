@@ -16,7 +16,7 @@
         </div>
         <div class="col-8">
           <h1 class="display-6"><%= data.title %></h1>
-          <p class="lead"><%= nameSplit(data.User.username) %></p>
+          <p class="lead">Author: <%= nameSplit(data.User.username) %></p>
           <p><%= data.content %></p>
         </div>
       </div>
@@ -25,7 +25,7 @@
   <div class="mt-5">
     <% if (currentUser !== null) { %>
       <% if (currentUser.id === data.AuthorId) { %>
-        <a class="btn btn-outline-warning">Edit Article</a>
+        <a href="/article/<%= data.id %>" class="btn btn-outline-warning">Edit Article</a>
         <a class="btn btn-outline-danger">Delete Article</a>
       <% } %>
       <a class="btn btn-outline-success">Add To Bookmark</a>
