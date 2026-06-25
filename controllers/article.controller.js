@@ -95,7 +95,24 @@ class Controller {
       const { id } = req.params;
       let data = await Article.findByPk(id);
 
-      res.render("editArticle.ejs", { data, currentUser, errorShow });
+      let categories = await Category.findAll();
+
+      let categoryData = await ArticleCategory.findAll({
+        where: {
+          ArticleId: id,
+        },
+        attributes: ["CategoryId"],
+      });
+
+      categoryData = categoryData[0].CategoryId;
+
+      res.render("editArticle.ejs", {
+        data,
+        currentUser,
+        errorShow,
+        categoryData,
+        categories,
+      });
     } catch (error) {
       console.log(error);
       res.send(error);

@@ -25,6 +25,14 @@
           <input style="display: none;" type="text" class="form-control" id="authorid" name="AuthorId" value="<%= data.AuthorId %>">
         </div>
         <div class="mb-3">
+          <label for="category" class="form-label">Category</strong></label>
+          <select class="form-select" name="CategoryId" id="category">
+            <% categories.forEach(item => { %>
+              <option <%= categoryData === item.id ? "selected" : "" %> value="<%= item.id %>"><%= item.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="mb-3">
           <label for="picture" class="form-label">Picture</label> <br>
           <img src="http://<%= data.thumbnailPicture %>" class="img-thumbnail" style="width: 300px;" alt="<%= data.title %>">
           <input type="file" class="form-control" id="picture" name="thumbnailPicture">
