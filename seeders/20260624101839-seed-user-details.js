@@ -12,6 +12,7 @@ module.exports = {
     data = JSON.parse(data);
     data = data.map((item) => {
       delete item.id;
+      item.bio = "Lorem ipsum dolor sit amet.";
       item.createdAt = new Date();
       item.updatedAt = new Date();
       return item;
