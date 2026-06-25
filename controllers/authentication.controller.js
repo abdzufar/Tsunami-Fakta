@@ -19,7 +19,7 @@ class Controller {
     try {
       const userInput = req.body;
       await User.create(userInput);
-      res.redirect('/');
+      res.redirect(`/authentication/login?successMessage=${"Akun berhasil dibuat."}`);
     } catch (error) {
       if (error.name !== "SequelizeValidationError") {
         console.log(error);
@@ -37,8 +37,9 @@ class Controller {
       const name = "Login Akun";
       const currentUser = req.session.currentUser || null;
       const errorMessage = req.query.errorMessage || "";
+      const successMessage = req.query.successMessage || "";
       const userInput = req.query.userInput ? JSON.parse(req.query.userInput) : {};
-      res.render('login', {name, currentUser, errorMessage, userInput});
+      res.render('login', {name, currentUser, errorMessage, successMessage, userInput});
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -61,7 +62,7 @@ class Controller {
         throw new Error("Username atau Password tidak sesuai.");
       };
       const currentUser = await User.findOne({
-        attributes: ['id', 'username'],
+        attributes: ['id', 'username', 'role'],
         where: {
           username: userInput.username
         }
