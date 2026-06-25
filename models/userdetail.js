@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const formattedDate = require('../helpers/formattedDate');
+const calculateAge = require('../helpers/calculateAge');
 module.exports = (sequelize, DataTypes) => {
   class UserDetail extends Model {
     /**
@@ -12,11 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       UserDetail.belongsTo(models.User)
     }
+
+    get formattedBirthDate() {
+      return formattedDate(this.birthDate);
+    }
+
+    get age() {
+      return calculateAge(this.birthDate);
+    }
   }
   UserDetail.init({
     UserId: DataTypes.INTEGER,
     fullName: DataTypes.STRING,
-    birthDate: DataTypes.DATE
+    birthDate: DataTypes.DATE,
+    bio: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'UserDetail',

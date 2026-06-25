@@ -97,6 +97,14 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate: (user, options) => {
         user.password = bcrypt.hashSync(user.password, 10);
+      },
+      afterCreate: async (user, options) => {
+        await sequelize.models.UserDetail.create({
+          UserId: user.id,
+          birthDate: new Date("1970-01-01"),
+          fullName: "John Doe",
+          bio: "Hai, aku pendaftar baru di sini."
+        })
       }
     }
   });
