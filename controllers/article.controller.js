@@ -1,4 +1,4 @@
-const { Article, User, Category } = require("../models");
+const { Article, User, Category, ArticleCategory } = require("../models");
 const cutContent = require("../helpers/cutContent");
 const nameSplit = require("../helpers/nameSplit");
 const { Op, where } = require("sequelize");
@@ -37,12 +37,15 @@ class Controller {
     try {
       const currentUser = req.session.currentUser || null;
 
+      // getting category id
+      let categoryData = await Category.findAll();
+
       let errorShow = "";
       if (req.query.error !== undefined) {
         errorShow = req.query.error.split(",").join(" and ");
       }
 
-      res.render("addNewArticle", { currentUser, errorShow });
+      res.render("addNewArticle", { currentUser, errorShow, categoryData });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -51,18 +54,23 @@ class Controller {
 
   static async postArticle(req, res) {
     try {
-      const { title, content, AuthorId, thumbnailPicture } = req.body;
+      const { title, content, AuthorId, CategoryId } = req.body;
       let filename;
       if (req.file === undefined) {
         filename = "placeholder.png";
       } else {
         filename = req.file.filename;
       }
-      await Article.create({
+      let articleCreate = await Article.create({
         title,
         content,
         AuthorId,
         thumbnailPicture: `localhost:3000/${filename}`,
+      });
+
+      await ArticleCategory.create({
+        ArticleId: articleCreate.id,
+        CategoryId,
       });
 
       res.redirect("/article");
