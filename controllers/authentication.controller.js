@@ -17,6 +17,7 @@ class Controller {
   static async postRegisterForm(req, res) {
     try {
       const userInput = req.body;
+      console.log(userInput);
       await User.create(userInput);
       res.redirect(`/authentication/login?successMessage=${"Akun berhasil dibuat."}`);
     } catch (error) {

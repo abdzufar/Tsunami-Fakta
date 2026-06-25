@@ -1,0 +1,28 @@
+<%- include('components/header', {name: "My Bookmarks"}) %>
+<main>
+  <div class='container my-3'>
+    <h3 class="text-center my-3">Keseluruhan Bookmark Anda</h3>
+    <form action="/article/myBookmarks" method="get" class="row my-3 g-3">
+
+      <div class="col-md">
+        <input type="search" name="searchQuery" id="searchQuery" placeholder="Search Artikel" class="form-control" value="<%= userInput.searchQuery %>">
+      </div>
+
+      <div class="col-md">
+        <select name="categoryId" id="categoryId" class="form-select">
+          <option <%= !userInput.categoryId ? "selected" : "" %> hidden value="">Filter berdasarkan kategori</option>
+          <option <%= +userInput.categoryId === 0 ? "selected" : "" %> value="0">-</option>
+          <% categoriesArr.forEach(categoryObj => { %>
+          <option <%= +userInput.categoryId === categoryObj.id ? "selected" : "" %> value="<%= categoryObj.id %>"><%= categoryObj.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+    <%- include('components/articleCards') %>
+  </div>
+</main>
+<%- include('components/footer') %>
