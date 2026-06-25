@@ -29,6 +29,8 @@ router.post(
 
 router.get("/myBookmarks", preventGuests, Controller.getMyBookmarks);
 
+router.get("/delete/:id", Controller.deleteArticle);
+
 router.get("/:id", Controller.getDetailArticle);
 
 module.exports = router;

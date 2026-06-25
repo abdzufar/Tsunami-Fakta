@@ -136,6 +136,20 @@ class Controller {
     }
   }
 
+  static async deleteArticle(req, res) {
+    try {
+      const { id } = req.params;
+      await Article.destroy({
+        where: {
+          id: id,
+        },
+      });
+      res.redirect("/");
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
   static async getMyBookmarks(req, res) {
     try {
       const currentUser = req.session.currentUser || null;

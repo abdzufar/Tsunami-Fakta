@@ -26,7 +26,7 @@
     <% if (currentUser !== null) { %>
       <% if (currentUser.id === data.AuthorId) { %>
         <a href="/article/edit/<%= data.id %>" class="btn btn-outline-warning">Edit Article</a>
-        <a class="btn btn-outline-danger">Delete Article</a>
+        <a href="/article/delete/<%= data.id %>" class="btn btn-outline-danger">Delete Article</a>
       <% } %>
       <a class="btn btn-outline-success">Add To Bookmark</a>
     <% } %>
