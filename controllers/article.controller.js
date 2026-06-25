@@ -155,7 +155,6 @@ class Controller {
         },
         attributes: ["CategoryId"],
       });
-      console.log(categoryData);
 
       res.render("editArticle.ejs", {
         data,
