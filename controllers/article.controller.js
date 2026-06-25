@@ -8,7 +8,6 @@ class Controller {
     try {
       let data = await Article.findAll();
       const currentUser = req.session.currentUser || null;
-      console.log(currentUser);
 
       res.render("articles", { data, cutContent, currentUser });
     } catch (error) {
@@ -20,7 +19,6 @@ class Controller {
     try {
       const { id } = req.params;
       const currentUser = req.session.currentUser || null;
-      console.log(currentUser);
 
       let data = await Article.findByPk(id, {
         include: {
@@ -39,8 +37,15 @@ class Controller {
     try {
       const currentUser = req.session.currentUser || null;
 
-      res.render("addNewArticle", { currentUser });
+      let errorShow = "";
+      if (req.query.error !== undefined) {
+        errorShow = req.query.error.split(",").join(" and ");
+      }
+      console.log(req.query.error);
+
+      res.render("addNewArticle", { currentUser, errorShow });
     } catch (error) {
+      console.log(error);
       res.send(error);
     }
   }
@@ -48,7 +53,12 @@ class Controller {
   static async postArticle(req, res) {
     try {
       const { title, content, AuthorId, thumbnailPicture } = req.body;
-      let { filename } = req.file;
+      let filename;
+      if (req.file === undefined) {
+        filename = "placeholder.png";
+      } else {
+        filename = req.file.filename;
+      }
       await Article.create({
         title,
         content,
@@ -58,11 +68,11 @@ class Controller {
 
       res.redirect("/article");
     } catch (error) {
-      console.log(error);
       if (error.name === "SequelizeValidationError") {
         error = error.errors.map((el) => el.message);
       }
-      res.send(error);
+      // res.send(error);
+      res.redirect(`/article/add?error=${error}`);
     }
   }
 
@@ -125,7 +135,8 @@ class Controller {
       const userInput = req.query || {};
       const where1 = {};
       const where2 = {};
-      if (userInput.searchQuery) where1.title = {[Op.iLike]: `%${userInput.searchQuery}%`};
+      if (userInput.searchQuery)
+        where1.title = { [Op.iLike]: `%${userInput.searchQuery}%` };
       if (userInput.categoryId) where2.id = +userInput.categoryId;
       let data = await User.findByPk(currentUser.id, {
         attributes: [],
@@ -134,20 +145,24 @@ class Controller {
           as: "BookmarkedArticles",
           include: {
             model: Category,
-            where: where2
+            where: where2,
           },
-          where: where1
+          where: where1,
         },
-      })
+      });
       data = data ? data.BookmarkedArticles : [];
       const categoriesArr = await Category.findAll({
-        attributes: ['id', 'name'],
-        order: [
-          ['id', 'ASC']
-        ]
-      })
+        attributes: ["id", "name"],
+        order: [["id", "ASC"]],
+      });
       // res.send(data);
-      res.render('myBookmarks', {currentUser, data, cutContent, categoriesArr, userInput});
+      res.render("myBookmarks", {
+        currentUser,
+        data,
+        cutContent,
+        categoriesArr,
+        userInput,
+      });
     } catch (error) {
       console.log(error);
       res.send(error);
