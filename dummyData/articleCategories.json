@@ -18,5 +18,25 @@
     "id": 4,
     "ArticleId": 2,
     "CategoryId": 6
+  },
+  {
+    "id": 5,
+    "ArticleId": 3,
+    "CategoryId": 7
+  },
+  {
+    "id": 6,
+    "ArticleId": 4,
+    "CategoryId": 6
+  },
+  {
+    "id": 7,
+    "ArticleId": 4,
+    "CategoryId": 5
+  },
+  {
+    "id": 8,
+    "ArticleId": 5,
+    "CategoryId": 3
   }
 ]

@@ -150,6 +150,14 @@ class Controller {
     }
   }
 
+  static async addingBookmark(req, res) {
+    try {
+      res.send("ini halaman bookmark");
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
   static async getMyBookmarks(req, res) {
     try {
       const currentUser = req.session.currentUser || null;
