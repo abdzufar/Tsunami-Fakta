@@ -1,4 +1,10 @@
-const { Article, User, Category, ArticleCategory } = require("../models");
+const {
+  Article,
+  User,
+  Category,
+  ArticleCategory,
+  ArticleBookmark,
+} = require("../models");
 const cutContent = require("../helpers/cutContent");
 const nameSplit = require("../helpers/nameSplit");
 const { Op } = require("sequelize");
@@ -13,7 +19,13 @@ class Controller {
         attributes: ["id", "name"],
         order: [["id", "ASC"]],
       });
-      res.render("articles", { data, cutContent, currentUser, userInput, categoriesArr });
+      res.render("articles", {
+        data,
+        cutContent,
+        currentUser,
+        userInput,
+        categoriesArr,
+      });
     } catch (error) {
       res.send(error);
     }
@@ -30,7 +42,23 @@ class Controller {
         },
       });
 
-      res.render("detailArticle", { data, nameSplit, currentUser });
+      let categoryNumber = await ArticleCategory.findAll({
+        where: {
+          ArticleId: id,
+        },
+        attributes: ["CategoryId"],
+      });
+      categoryNumber = categoryNumber[0].CategoryId;
+
+      let categoryName = await Category.findByPk(categoryNumber);
+      console.log(categoryName.name);
+
+      res.render("detailArticle", {
+        data,
+        nameSplit,
+        currentUser,
+        categoryName,
+      });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -181,7 +209,16 @@ class Controller {
 
   static async addingBookmark(req, res) {
     try {
-      res.send("ini halaman bookmark");
+      // dapatkan id current user, dapatkan id article
+      const currentUser = req.session.currentUser || null;
+      const { id } = req.params;
+
+      await ArticleBookmark.create({
+        ArticleId: id,
+        UserId: currentUser.id,
+      });
+
+      res.redirect(`/article/${id}`);
     } catch (error) {
       res.send(error);
     }
