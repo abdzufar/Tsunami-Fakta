@@ -1,4 +1,10 @@
-const { Article, User, Category, ArticleCategory } = require("../models");
+const {
+  Article,
+  User,
+  Category,
+  ArticleCategory,
+  ArticleBookmark,
+} = require("../models");
 const cutContent = require("../helpers/cutContent");
 const nameSplit = require("../helpers/nameSplit");
 const { Op } = require("sequelize");
@@ -13,7 +19,13 @@ class Controller {
         attributes: ["id", "name"],
         order: [["id", "ASC"]],
       });
-      res.render("articles", { data, cutContent, currentUser, userInput, categoriesArr });
+      res.render("articles", {
+        data,
+        cutContent,
+        currentUser,
+        userInput,
+        categoriesArr,
+      });
     } catch (error) {
       res.send(error);
     }
@@ -30,7 +42,38 @@ class Controller {
         },
       });
 
-      res.render("detailArticle", { data, nameSplit, currentUser });
+      let categoryNumber = await ArticleCategory.findAll({
+        where: {
+          ArticleId: id,
+        },
+        attributes: ["CategoryId"],
+      });
+      categoryNumber = categoryNumber[0].CategoryId;
+
+      let categoryName = await Category.findByPk(categoryNumber);
+
+      // cek apakah pernah dimasukan ke bookmarks
+      let bookmarkCheck = await ArticleBookmark.findAll({
+        where: {
+          ArticleId: id,
+        },
+      });
+
+      if (bookmarkCheck.length === 0) {
+        // belum pernah masuk bookmark = false
+        bookmarkCheck = false;
+      } else {
+        // masuk bookmark = true
+        bookmarkCheck = true;
+      }
+
+      res.render("detailArticle", {
+        data,
+        nameSplit,
+        currentUser,
+        categoryName,
+        bookmarkCheck,
+      });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -72,10 +115,15 @@ class Controller {
         thumbnailPicture: `localhost:3000/${filename}`,
       });
 
-      await ArticleCategory.create({
-        ArticleId: articleCreate.id,
-        CategoryId,
+      let categoryArray = req.body.categoryCheck;
+      categoryArray = categoryArray.map((item) => {
+        return {
+          ArticleId: articleCreate.id,
+          CategoryId: item,
+        };
       });
+
+      await ArticleCategory.bulkCreate(categoryArray);
 
       res.redirect("/article");
     } catch (error) {
@@ -99,7 +147,24 @@ class Controller {
       const { id } = req.params;
       let data = await Article.findByPk(id);
 
-      res.render("editArticle.ejs", { data, currentUser, errorShow });
+      let categories = await Category.findAll();
+
+      let categoryData = await ArticleCategory.findAll({
+        where: {
+          ArticleId: id,
+        },
+        attributes: ["CategoryId"],
+      });
+
+      categoryData = categoryData[0].CategoryId;
+
+      res.render("editArticle.ejs", {
+        data,
+        currentUser,
+        errorShow,
+        categoryData,
+        categories,
+      });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -164,7 +229,16 @@ class Controller {
 
   static async addingBookmark(req, res) {
     try {
-      res.send("ini halaman bookmark");
+      // dapatkan id current user, dapatkan id article
+      const currentUser = req.session.currentUser || null;
+      const { id } = req.params;
+
+      await ArticleBookmark.create({
+        ArticleId: id,
+        UserId: currentUser.id,
+      });
+
+      res.redirect(`/article/${id}`);
     } catch (error) {
       res.send(error);
     }
