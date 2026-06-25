@@ -5,6 +5,12 @@
       Adding new article
     </div>
     <div class="card-body">
+      <% if (errorShow !== "") { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <p><%= errorShow %></p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
       <form action="/article/edit/<%= data.id %>" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
