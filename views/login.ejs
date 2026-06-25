@@ -5,6 +5,9 @@
       <div class="card">
         <div class="card-body p-4">
           <h2 class="text-center mb-4">Login</h2>
+          <% if (successMessage) { %>
+            <h6 class="alert alert-success"><%= successMessage %></h6>
+          <% } %>
           <% if (errorMessage) { %>
             <h6 class="alert alert-danger"><%= errorMessage %></h6>
           <% } %>
