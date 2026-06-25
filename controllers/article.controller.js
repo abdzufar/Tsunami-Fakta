@@ -1,15 +1,19 @@
 const { Article, User, Category, ArticleCategory } = require("../models");
 const cutContent = require("../helpers/cutContent");
 const nameSplit = require("../helpers/nameSplit");
-const { Op, where } = require("sequelize");
+const { Op } = require("sequelize");
 
 class Controller {
   static async renderArticlePage(req, res) {
     try {
-      let data = await Article.findAll();
       const currentUser = req.session.currentUser || null;
-
-      res.render("articles", { data, cutContent, currentUser });
+      const userInput = req.query || {};
+      const data = await Article.getFilteredArticles(userInput);
+      const categoriesArr = await Category.findAll({
+        attributes: ["id", "name"],
+        order: [["id", "ASC"]],
+      });
+      res.render("articles", { data, cutContent, currentUser, userInput, categoriesArr });
     } catch (error) {
       res.send(error);
     }
@@ -170,28 +174,13 @@ class Controller {
     try {
       const currentUser = req.session.currentUser || null;
       const userInput = req.query || {};
-      const where1 = {};
-      const where2 = {};
-      if (userInput.searchQuery)
-        where1.title = { [Op.iLike]: `%${userInput.searchQuery}%` };
-      if (userInput.categoryId) where2.id = +userInput.categoryId;
-      let data = await User.findByPk(currentUser.id, {
-        attributes: [],
-        include: {
-          model: Article,
-          as: "BookmarkedArticles",
-          include: {
-            model: Category,
-            where: where2,
-          },
-          where: where1,
-        },
-      });
-      data = data ? data.BookmarkedArticles : [];
+      const data = await User.getBookmarksOfUser(currentUser, userInput);
       const categoriesArr = await Category.findAll({
         attributes: ["id", "name"],
         order: [["id", "ASC"]],
       });
+
+      console.log(data);
       // res.send(data);
       res.render("myBookmarks", {
         currentUser,

@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
     /**
@@ -19,6 +20,21 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "ArticleId",
         as: "BookmarkedByUsers",
       });
+    }
+
+    static async getFilteredArticles(userInput) {
+      const where1 = {};
+      const where2 = {};
+      if (userInput.searchQuery) where1.title = { [Op.iLike]: `%${userInput.searchQuery}%` };
+      if (userInput.categoryId) where2.id = +userInput.categoryId;
+      let data = await Article.findAll({
+        include: {
+          model: sequelize.models.Category,
+          where: where2,
+        },
+        where: where1,
+      })
+      return data;
     }
   }
   Article.init(
