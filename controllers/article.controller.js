@@ -48,10 +48,10 @@ class Controller {
         },
         attributes: ["CategoryId"],
       });
-      categoryNumber = categoryNumber[0].CategoryId;
-
-      let categoryName = await Category.findByPk(categoryNumber);
-
+      let categoryArrNumber = categoryNumber.map((item) => item.CategoryId);
+      let categoryName = await Promise.all(
+        categoryArrNumber.map((item) => Category.findByPk(item)),
+      );
       // cek apakah pernah dimasukan ke bookmarks
       let bookmarkCheck = await ArticleBookmark.findAll({
         where: {

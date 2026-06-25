@@ -18,7 +18,11 @@
           <h1 class="display-6"><%= data.title %></h1>
           <p class="lead">Author: <%= nameSplit(data.User.username) %></p>
           <p><%= data.content %></p>
-          <p class="lead">Kategory: <strong><%= categoryName.name %></strong></p>
+          <p class="lead">Kategory: -
+            <% categoryName.forEach(item => { %>
+              <strong><%= item.name %></strong> -
+            <% }) %>
+          </p>
         </div>
       </div>
     </div>
