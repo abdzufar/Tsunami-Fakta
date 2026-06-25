@@ -1,4 +1,4 @@
-<%- include('components/header', {name: "Add new article"}) %>
+<%- include('components/header', {name: "Add new article", currentUser}) %>
 <div class="container">
   <div class="card mt-5">
     <div class="card-header text-center">
@@ -15,8 +15,8 @@
           <textarea class="form-control" id="content" rows="3" name="content"></textarea>
         </div>
         <div class="mb-3">
-          <label for="authorid" class="form-label">Author</label>
-          <input type="text" class="form-control" id="authorid" name="AuthorId">
+          <label for="authorid" class="form-label">Author: <strong><%= currentUser.username %></strong></label>
+          <input hidden disabled type="text" class="form-control" id="authorid" name="AuthorId" value="<%= currentUser.id %>">
         </div>
         <div class="mb-3">
           <label for="picture" class="form-label">Picture</label>

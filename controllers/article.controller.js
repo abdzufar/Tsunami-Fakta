@@ -8,6 +8,8 @@ class Controller {
     try {
       let data = await Article.findAll();
       const currentUser = req.session.currentUser || null;
+      console.log(currentUser);
+
       res.render("articles", { data, cutContent, currentUser });
     } catch (error) {
       res.send(error);
@@ -17,6 +19,9 @@ class Controller {
   static async getDetailArticle(req, res) {
     try {
       const { id } = req.params;
+      const currentUser = req.session.currentUser || null;
+
+      console.log(currentUser);
 
       let data = await Article.findByPk(id, {
         include: {
@@ -24,7 +29,7 @@ class Controller {
         },
       });
 
-      res.render("detailArticle", { data, nameSplit });
+      res.render("detailArticle", { data, nameSplit, currentUser });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -33,6 +38,8 @@ class Controller {
 
   static async addArticle(req, res) {
     try {
+      const currentUser = req.session.currentUser || null;
+
       let data = await User.findAll({
         where: {
           role: {
@@ -40,8 +47,9 @@ class Controller {
           },
         },
       });
+      console.log(currentUser);
 
-      res.render("addNewArticle");
+      res.render("addNewArticle", { currentUser });
     } catch (error) {
       res.send(error);
     }
@@ -58,9 +66,6 @@ class Controller {
         AuthorId,
         thumbnailPicture: `localhost:3000/${filename}`,
       });
-
-      // console.log(req.body);
-      // console.log(req.file);
 
       res.redirect("/article");
     } catch (error) {
