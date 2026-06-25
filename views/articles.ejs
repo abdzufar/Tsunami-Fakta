@@ -7,7 +7,9 @@
   </div>
 </div>
 <div class="container mt-5">
-  <a href="/article/add" class="btn btn-outline-success mb-5">Add new Article</a>
+  <% if (currentUser !== null && currentUser.role === "Penulis") { %>
+    <a href="/article/add" class="btn btn-outline-success mb-5">Add new Article</a>
+  <% } %>
   <a href="#" class="btn btn-outline-info mb-5">See bookmarked article</a>
   <div class="row g-4 mb-5">
     <% data.forEach(item => { %>
