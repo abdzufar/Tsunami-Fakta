@@ -115,10 +115,15 @@ class Controller {
         thumbnailPicture: `localhost:3000/${filename}`,
       });
 
-      await ArticleCategory.create({
-        ArticleId: articleCreate.id,
-        CategoryId,
+      let categoryArray = req.body.categoryCheck;
+      categoryArray = categoryArray.map((item) => {
+        return {
+          ArticleId: articleCreate.id,
+          CategoryId: item,
+        };
       });
+
+      await ArticleCategory.bulkCreate(categoryArray);
 
       res.redirect("/article");
     } catch (error) {
