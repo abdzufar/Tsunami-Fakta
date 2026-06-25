@@ -25,12 +25,14 @@
           <input style="display: none;" type="text" class="form-control" id="authorid" name="AuthorId" value="<%= data.AuthorId %>">
         </div>
         <div class="mb-3">
-          <label for="category" class="form-label">Category</strong></label>
-          <select class="form-select" name="CategoryId" id="category">
-            <% categories.forEach(item => { %>
-              <option <%= categoryData === item.id ? "selected" : "" %> value="<%= item.id %>"><%= item.name %></option>
-            <% }) %>
-          </select>
+          <% categories.forEach(item => { %>
+            <div class="form-check">
+                <input class="form-check-input" name="categoryCheck" type="checkbox" value="<%= item.id %>" id="<%= item.name %>" <%= categoryData.some(element => element.CategoryId === item.id) ? "checked": "" %>>
+                <label class="form-check-label" for="<%= item.name %>">
+                  <%= item.name %>
+                </label>
+            </div>
+          <% }) %>
         </div>
         <div class="mb-3">
           <label for="picture" class="form-label">Picture</label> <br>
