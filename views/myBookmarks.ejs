@@ -11,7 +11,7 @@
       <div class="col-md">
         <select name="categoryId" id="categoryId" class="form-select">
           <option <%= !userInput.categoryId ? "selected" : "" %> hidden value="">Filter berdasarkan kategori</option>
-          <option <%= +userInput.categoryId === 0 ? "selected" : "" %> value="0">-</option>
+          <option value="">-</option>
           <% categoriesArr.forEach(categoryObj => { %>
           <option <%= +userInput.categoryId === categoryObj.id ? "selected" : "" %> value="<%= categoryObj.id %>"><%= categoryObj.name %></option>
           <% }) %>

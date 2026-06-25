@@ -4,6 +4,7 @@ const {
   where
 } = require('sequelize');
 const bcrypt = require('bcryptjs');
+const { Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -21,6 +22,27 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'UserId',
         as: 'BookmarkedArticles'
       });
+    }
+
+    static async getBookmarksOfUser(currentUser, userInput) {
+      const where1 = {};
+      const where2 = {};
+      if (userInput.searchQuery) where1.title = { [Op.iLike]: `%${userInput.searchQuery}%` };
+      if (userInput.categoryId) where2.id = +userInput.categoryId;
+      let data = await User.findByPk(currentUser.id, {
+        attributes: [],
+        include: {
+          model: sequelize.models.Article,
+          as: "BookmarkedArticles",
+          include: {
+            model: sequelize.models.Category,
+            where: where2,
+          },
+          where: where1,
+        },
+      });
+      data = data ? data.BookmarkedArticles : [];
+      return data;
     }
   }
   User.init({
