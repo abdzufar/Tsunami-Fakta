@@ -27,8 +27,14 @@
     
             </ul>
             <div class="d-flex">
-              <a href="/authentication/login" class="btn btn-outline-secondary me-2">Login</a>
-              <a href="/authentication/register" class="btn btn-secondary">Register</a>
+              <% if (currentUser) { %>
+                <form action="/authentication/logout" method="post">
+                  <button type="submit" class="btn btn-outline-secondary me-2">Logout</button>
+                </form>
+              <% } else { %>
+                <a href="/authentication/login" class="btn btn-outline-secondary me-2">Login</a>
+                <a href="/authentication/register" class="btn btn-secondary">Register</a>
+              <% } %>
             </div>
           </div>
         </div>
