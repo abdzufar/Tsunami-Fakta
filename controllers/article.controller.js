@@ -48,8 +48,7 @@ class Controller {
   static async postArticle(req, res) {
     try {
       const { title, content, AuthorId, thumbnailPicture } = req.body;
-      let { destination, filename, mimetype } = req.file;
-      mimetype = mimetype.split("/")[1];
+      let { filename } = req.file;
       await Article.create({
         title,
         content,
@@ -63,6 +62,59 @@ class Controller {
       if (error.name === "SequelizeValidationError") {
         error = error.errors.map((el) => el.message);
       }
+      res.send(error);
+    }
+  }
+
+  static async editArticle(req, res) {
+    try {
+      const currentUser = req.session.currentUser || null;
+
+      const { id } = req.params;
+      let data = await Article.findByPk(id);
+
+      res.render("editArticle.ejs", { data, currentUser });
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+  }
+
+  static async postEditArticle(req, res) {
+    try {
+      const { id } = req.params;
+      const { title, content } = req.body;
+      if (req.file === undefined) {
+        await Article.update(
+          {
+            title,
+            content,
+          },
+          {
+            where: {
+              id: id,
+            },
+          },
+        );
+      } else {
+        let { filename } = req.file;
+        await Article.update(
+          {
+            title,
+            content,
+            thumbnailPicture: `localhost:3000/${filename}`,
+          },
+          {
+            where: {
+              id: id,
+            },
+          },
+        );
+      }
+
+      res.redirect(`/article/${id}`);
+    } catch (error) {
+      console.log(error);
       res.send(error);
     }
   }
