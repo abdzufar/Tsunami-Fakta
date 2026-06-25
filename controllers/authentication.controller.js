@@ -4,11 +4,10 @@ const bcrypt = require('bcryptjs');
 class Controller {
   static async getRegisterForm(req, res) {
     try {
-      const name = "Daftar Akun Baru";
       const currentUser = req.session.currentUser || null;
       const errorMessage = req.query.errorMessage ? JSON.parse(req.query.errorMessage) : {};
       const userInput = req.query.userInput ? JSON.parse(req.query.userInput) : {};
-      res.render('register', {name, currentUser, errorMessage, userInput})
+      res.render('register', {currentUser, errorMessage, userInput})
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -34,12 +33,11 @@ class Controller {
   
   static async getLoginForm(req, res) {
     try {
-      const name = "Login Akun";
       const currentUser = req.session.currentUser || null;
       const errorMessage = req.query.errorMessage || "";
       const successMessage = req.query.successMessage || "";
       const userInput = req.query.userInput ? JSON.parse(req.query.userInput) : {};
-      res.render('login', {name, currentUser, errorMessage, successMessage, userInput});
+      res.render('login', {currentUser, errorMessage, successMessage, userInput});
     } catch (error) {
       console.log(error);
       res.send(error);
