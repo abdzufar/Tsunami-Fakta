@@ -20,7 +20,6 @@ class Controller {
     try {
       const { id } = req.params;
       const currentUser = req.session.currentUser || null;
-
       console.log(currentUser);
 
       let data = await Article.findByPk(id, {
@@ -40,15 +39,6 @@ class Controller {
     try {
       const currentUser = req.session.currentUser || null;
 
-      let data = await User.findAll({
-        where: {
-          role: {
-            [Op.eq]: "Penulis",
-          },
-        },
-      });
-      console.log(currentUser);
-
       res.render("addNewArticle", { currentUser });
     } catch (error) {
       res.send(error);
@@ -66,6 +56,7 @@ class Controller {
         AuthorId,
         thumbnailPicture: `localhost:3000/${filename}`,
       });
+      console.log(req.body);
 
       res.redirect("/article");
     } catch (error) {
