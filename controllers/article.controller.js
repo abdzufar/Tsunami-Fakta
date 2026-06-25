@@ -7,8 +7,8 @@ class Controller {
   static async renderArticlePage(req, res) {
     try {
       let data = await Article.findAll();
-
-      res.render("articles", { data, cutContent });
+      const currentUser = req.session.currentUser || null;
+      res.render("articles", { data, cutContent, currentUser });
     } catch (error) {
       res.send(error);
     }

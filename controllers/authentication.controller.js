@@ -5,10 +5,10 @@ class Controller {
   static async getRegisterForm(req, res) {
     try {
       const name = "Daftar Akun Baru";
+      const currentUser = req.session.currentUser || null;
       const errorMessage = req.query.errorMessage ? JSON.parse(req.query.errorMessage) : {};
       const userInput = req.query.userInput ? JSON.parse(req.query.userInput) : {};
-      console.log(userInput);
-      res.render('register', {name, errorMessage, userInput})
+      res.render('register', {name, currentUser, errorMessage, userInput})
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -35,9 +35,10 @@ class Controller {
   static async getLoginForm(req, res) {
     try {
       const name = "Login Akun";
+      const currentUser = req.session.currentUser || null;
       const errorMessage = req.query.errorMessage || "";
       const userInput = req.query.userInput ? JSON.parse(req.query.userInput) : {};
-      res.render('login', {name, errorMessage, userInput});
+      res.render('login', {name, currentUser, errorMessage, userInput});
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -53,17 +54,40 @@ class Controller {
         where: {
           username: userInput.username
         }
-      })
+      });
       if (!userToTest) {
         throw new Error("Username atau Password tidak sesuai.");
       } else if (!bcrypt.compareSync(userInput.password, userToTest.password)) {
         throw new Error("Username atau Password tidak sesuai.");
-      }
+      };
+      const currentUser = await User.findOne({
+        attributes: ['id', 'username'],
+        where: {
+          username: userInput.username
+        }
+      });
+      req.session.currentUser = currentUser;
+      console.log(req.session);
       res.redirect('/');
     } catch (error) {
       console.log(error);
       const userInput = encodeURIComponent(JSON.stringify(req.body))
       res.redirect(`/authentication/login?errorMessage=${error.message}&userInput=${userInput}`);
+    }
+  }
+  
+  static async postLogout(req, res) {
+    try {
+      res.clearCookie('connect.sid');
+      req.session.destroy((err) => {
+        if (err) {
+          return res.status(500).send('Could not log out.');
+        }
+        res.redirect('/');
+      });
+    } catch (error) {
+      console.log(error);
+      res.send(error);
     }
   }
 }
