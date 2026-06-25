@@ -51,13 +51,28 @@ class Controller {
       categoryNumber = categoryNumber[0].CategoryId;
 
       let categoryName = await Category.findByPk(categoryNumber);
-      console.log(categoryName.name);
+
+      // cek apakah pernah dimasukan ke bookmarks
+      let bookmarkCheck = await ArticleBookmark.findAll({
+        where: {
+          ArticleId: id,
+        },
+      });
+
+      if (bookmarkCheck.length === 0) {
+        // belum pernah masuk bookmark = false
+        bookmarkCheck = false;
+      } else {
+        // masuk bookmark = true
+        bookmarkCheck = true;
+      }
 
       res.render("detailArticle", {
         data,
         nameSplit,
         currentUser,
         categoryName,
+        bookmarkCheck,
       });
     } catch (error) {
       console.log(error);

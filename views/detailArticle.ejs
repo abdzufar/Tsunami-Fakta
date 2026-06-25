@@ -29,7 +29,9 @@
         <a href="/article/edit/<%= data.id %>" class="btn btn-outline-warning">Edit Article</a>
         <a href="/article/delete/<%= data.id %>" class="btn btn-outline-danger">Delete Article</a>
       <% } %>
-      <a href="/article/addbookmark/<%= data.id %>" class="btn btn-outline-success">Add To Bookmark</a>
+      <% if (bookmarkCheck === false) { %>
+        <a href="/article/addbookmark/<%= data.id %>" class="btn btn-outline-success">Add To Bookmark</a>
+      <% } %>
     <% } %>
   </div>
 </div>
