@@ -7,6 +7,26 @@
   </div>
 </div>
 <div class="container mt-5">
+  <form action="/article" method="get" class="row my-3 g-3">
+
+      <div class="col-md">
+        <input type="search" name="searchQuery" id="searchQuery" placeholder="Search Artikel" class="form-control" value="<%= userInput.searchQuery %>">
+      </div>
+
+      <div class="col-md">
+        <select name="categoryId" id="categoryId" class="form-select">
+          <option <%= !userInput.categoryId ? "selected" : "" %> hidden value="">Filter berdasarkan kategori</option>
+          <option value="">-</option>
+          <% categoriesArr.forEach(categoryObj => { %>
+          <option <%= +userInput.categoryId === categoryObj.id ? "selected" : "" %> value="<%= categoryObj.id %>"><%= categoryObj.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
   <% if (currentUser !== null && currentUser.role === "Penulis") { %>
     <a href="/article/add" class="btn btn-outline-success mb-5">Add new Article</a>
   <% } %>
