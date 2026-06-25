@@ -1,0 +1,31 @@
+<%- include('components/header', {name: "Article Details", currentUser}) %>
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header text-center">
+      Adding new article
+    </div>
+    <div class="card-body">
+      <form action="/article/edit/<%= data.id %>" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title" value="<%= data.title %>">
+        </div>
+        <div class="mb-3">
+          <label for="content" class="form-label">Content</label>
+          <textarea class="form-control" id="content" rows="3" name="content"><%= data.content %></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="authorid" class="form-label">Author: <strong><%= currentUser.username %></strong></label>
+          <input style="display: none;" type="text" class="form-control" id="authorid" name="AuthorId" value="<%= data.AuthorId %>">
+        </div>
+        <div class="mb-3">
+          <label for="picture" class="form-label">Picture</label> <br>
+          <img src="http://<%= data.thumbnailPicture %>" class="img-thumbnail" style="width: 300px;" alt="<%= data.title %>">
+          <input type="file" class="form-control" id="picture" name="thumbnailPicture">
+        </div>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('components/footer') %>
