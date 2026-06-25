@@ -47,7 +47,6 @@ class Controller {
   static async postLoginForm(req, res) {
     try {
       const userInput = req.body;
-      console.log(userInput);
       const userToTest = await User.findOne({
         attributes: ['password'],
         where: {
@@ -66,7 +65,6 @@ class Controller {
         }
       });
       req.session.currentUser = currentUser;
-      console.log(req.session);
       res.redirect('/');
     } catch (error) {
       console.log(error);

@@ -24,6 +24,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
               </li>
+
+              <% if (currentUser) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/article/myBookmarks">My Bookmarks</a>
+              </li>
+              <% } %>
     
             </ul>
             <div class="d-flex">
