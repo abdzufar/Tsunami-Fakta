@@ -56,7 +56,6 @@ class Controller {
         AuthorId,
         thumbnailPicture: `localhost:3000/${filename}`,
       });
-      console.log(req.body);
 
       res.redirect("/article");
     } catch (error) {
