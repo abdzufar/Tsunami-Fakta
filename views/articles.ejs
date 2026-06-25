@@ -7,13 +7,13 @@
   </div>
 </div>
 <div class="container mt-5">
-  <a href="#" class="btn btn-outline-success mb-5">Add new Article</a>
-  <%#= JSON.parse(categoriesData) %>
+  <a href="/article/add" class="btn btn-outline-success mb-5">Add new Article</a>
+  <a href="#" class="btn btn-outline-info mb-5">See bookmarked article</a>
   <div class="row g-4 mb-5">
     <% data.forEach(item => { %>
       <div class="col-lg-3">
         <div class="card">
-          <img src="<%= item.thumbnailPicture %> " class="card-img-top" alt="<%= item.title %>">
+          <img src="http://<%= item.thumbnailPicture %>" class="card-img-top" alt="<%= item.title %>">
           <div class="card-body">
             <h5 class="card-title"><%= item.title %></h5>
             <p class="card-text"><%= cutContent(item.content) %></p>

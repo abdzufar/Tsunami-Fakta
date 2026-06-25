@@ -3,6 +3,8 @@ const app = express();
 const router = require("./routes");
 const port = 3000;
 
+app.use(express.static("uploads"));
+
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
