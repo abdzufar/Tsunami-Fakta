@@ -66,6 +66,14 @@ class Controller {
       res.send(error);
     }
   }
+
+  static async getMyBookmarks(req, res) {
+    try {
+      
+    } catch (error) {
+      res.send(error);
+    }
+  }
 }
 
 module.exports = Controller;

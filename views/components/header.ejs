@@ -24,6 +24,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
               </li>
+
+              <% if (currentUser) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/article/myBookmarks">My Bookmarks</a>
+              </li>
+              <% } %>
     
             </ul>
             <div class="d-flex">
@@ -33,7 +39,7 @@
                 </form>
               <% } else { %>
                 <a href="/authentication/login" class="btn btn-outline-secondary me-2">Login</a>
-                <a href="/authentication/register" class="btn btn-secondary">Register</a>
+                <a href="/authentication/register" class="btn btn-secondary">Daftar</a>
               <% } %>
             </div>
           </div>
