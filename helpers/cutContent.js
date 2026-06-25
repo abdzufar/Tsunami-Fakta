@@ -1,6 +1,10 @@
 function cutContent(text) {
   let result = text.slice(0, 50);
-  result += "...";
+  if (text.length > 50) {
+    result += "...";
+  } else {
+    return text;
+  }
 
   return result;
 }
