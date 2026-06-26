@@ -9,28 +9,28 @@
   {
     "id": 2,
     "title": "Harga Cabai Merah Melonjak di Pasar Tradisional",
-    "AuthorId": 2,
+    "AuthorId": 3,
     "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
     "content": "Kenaikan harga dipicu oleh menurunnya pasokan akibat cuaca buruk di beberapa daerah penghasil. Pedagang memperkirakan harga akan kembali stabil dalam dua minggu ke depan."
   },
   {
     "id": 3,
     "title": "Startup Lokal Raih Pendanaan dari Investor Asing",
-    "AuthorId": 3,
+    "AuthorId": 5,
     "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
     "content": "Perusahaan rintisan di bidang teknologi pendidikan ini berhasil mengumpulkan dana segar untuk ekspansi ke pasar regional. Dana tersebut akan digunakan untuk pengembangan produk dan perekrutan talenta baru."
   },
   {
     "id": 4,
     "title": "Festival Budaya Tahunan Kembali Digelar Akhir Pekan Ini",
-    "AuthorId": 4,
+    "AuthorId": 7,
     "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
     "content": "Acara menampilkan ratusan penampil dari berbagai daerah dengan beragam pertunjukan seni tradisional. Panitia menargetkan kunjungan lebih dari sepuluh ribu pengunjung selama tiga hari penyelenggaraan."
   },
   {
     "id": 5,
     "title": "Tim Nasional Lolos ke Babak Final Setelah Menang Dramatis",
-    "AuthorId": 5,
+    "AuthorId": 9,
     "thumbnailPicture": "localhost:3000/Breaking-news-.jpg",
     "content": "Kemenangan diraih melalui adu penalti yang berlangsung menegangkan hingga tendangan terakhir. Pendukung memadati jalanan untuk merayakan keberhasilan tim kebanggaan mereka."
   }
