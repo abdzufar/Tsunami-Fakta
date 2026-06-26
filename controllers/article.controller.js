@@ -258,6 +258,23 @@ class Controller {
     }
   }
 
+  static async deleteBookmark(req, res) {
+    try {
+      const { articleid, userid } = req.params;
+
+      await ArticleBookmark.destroy({
+        where: {
+          ArticleId: articleid,
+          UserId: userid,
+        },
+      });
+      res.redirect(`/article/${articleid}`);
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+  }
+
   static async getMyBookmarks(req, res) {
     try {
       const currentUser = req.session.currentUser || null;
