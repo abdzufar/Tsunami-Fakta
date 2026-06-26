@@ -10,11 +10,78 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+      /* footer start */
+      .hero-text, .hero-subtext ,.nav-link, .navbar-brand {
+        color: #fff;
+        font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+      }
+      .navbar-brand {
+        font-size: 32px;
+      }
+      .nav-link {
+        box-sizing: border-box;
+        font-weight: 500;
+        font-size: 19px;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+      .nav-link:hover {
+        border: 1px solid #fff;
+      }
+      .hero-text {
+        padding-top: 150px;
+        font-size: 72px;
+        letter-spacing: 3px;
+      }
+      .hero-subtext {
+        font-weight: 500;
+      }
+#footer {
+  margin-top: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #00adb5;
+}
+#footer .top,
+#footer .bottom {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0px auto 0px auto;
+}
+#footer .top .left-side,
+#footer .bottom {
+  font-size: 18px;
+  color: #eeeeee;
+  padding: 23px 10px 0px 10px;
+}
+#footer .bottom {
+  font-size: 18px;
+  color: #eeeeee;
+  padding: 0px 10px 20px 10px;
+}
+#footer .top .right-side {
+  padding: 20px 10px 20px 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #eeeeee;
+}
+#footer .bottom {
+  margin-left: auto;
+  margin-right: auto;
+}
+    </style>
   </head>
   <body class="d-flex flex-column vh-100">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">Tsunami Fakta</a>
+      <nav class="navbar navbar-expand-lg" style="background-color: #06b6d4;">
+        <div class="container mt-3">
+          <a class="navbar-brand" href="/" style="color: #fff">Tsunami Fakta</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,16 +89,16 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
     
               <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/" style="color: #fff">Home</a>
               </li>
 
               <% if (currentUser) { %>
               <li class="nav-item">
-                <a class="nav-link" href="/article/myBookmarks">My Bookmarks</a>
+                <a class="nav-link" href="/article/myBookmarks" style="color: #fff">My Bookmarks</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="/user">Account Details</a>
+                <a class="nav-link" href="/user" style="color: #fff">Account Details</a>
               </li>
               <% } %>
     
@@ -39,11 +106,11 @@
             <div class="d-flex">
               <% if (currentUser) { %>
                 <form action="/authentication/logout" method="post">
-                  <button type="submit" class="btn btn-outline-secondary me-2">Logout</button>
+                  <button type="submit" class="btn btn-outline-secondary me-2" style="color: #fff">Logout</button>
                 </form>
               <% } else { %>
-                <a href="/authentication/login" class="btn btn-outline-secondary me-2">Login</a>
-                <a href="/authentication/register" class="btn btn-secondary">Daftar</a>
+                <a href="/authentication/login" class="btn btn-outline-info me-2" style="color: #fff; border: none">Login</a>
+                <a href="/authentication/register" class="btn btn-outline-info" style="color: #fff; border: none">Daftar</a>
               <% } %>
             </div>
           </div>
