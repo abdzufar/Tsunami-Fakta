@@ -35,6 +35,9 @@
       <% } %>
       <% if (bookmarkCheck === false) { %>
         <a href="/article/addbookmark/<%= data.id %>" class="btn btn-outline-success">Add To Bookmark</a>
+      <% } else { %>
+        <a href="/article/bookmark/<%= data.id %>/delete/<%= currentUser.id %>" class="btn btn-outline-danger">Delete Bookmark</a>
+
       <% } %>
     <% } %>
   </div>

@@ -32,6 +32,7 @@ router.get("/addbookmark/:id", preventGuests, Controller.addingBookmark);
 router.get("/myBookmarks", preventGuests, Controller.getMyBookmarks);
 
 router.get("/delete/:id", preventGuests, Controller.deleteArticle);
+router.get("/bookmark/:articleid/delete/:userid", Controller.deleteBookmark);
 
 router.get("/:id", Controller.getDetailArticle);
 
