@@ -156,8 +156,6 @@ class Controller {
         attributes: ["CategoryId"],
       });
 
-      categoryData = categoryData[0].CategoryId;
-
       res.render("editArticle.ejs", {
         data,
         currentUser,
@@ -202,6 +200,22 @@ class Controller {
           },
         );
       }
+
+      // destroy seluruh data di articles categorydengan article id yang dipilih lalu upload ulang
+      await ArticleCategory.destroy({
+        where: {
+          ArticleId: id,
+        },
+      });
+      let categoryArray = req.body.categoryCheck;
+      categoryArray = categoryArray.map((item) => {
+        return {
+          ArticleId: id,
+          CategoryId: item,
+        };
+      });
+
+      await ArticleCategory.bulkCreate(categoryArray);
 
       res.redirect(`/article/${id}`);
     } catch (error) {
